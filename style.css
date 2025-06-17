@@ -1,0 +1,168 @@
+/*
+  style.css 
+
+  Author: Haya Raham Asif
+*/
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+body {
+  background-color: rgb(187, 148, 223);
+}
+
+h1 {
+  font-family: "Jersey 15", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 100px;
+  color: blueviolet;
+  margin-bottom: 0;
+}
+
+
+
+.stopwatch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.stopwatch img {
+  height: auto;
+  width: 50px;
+  margin-right: 3px;
+}
+
+.stopwatch p {
+  font-size: 40px;
+  color: #e7e4cd;
+}
+
+p {
+  font-family: "Jersey 15", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+table {
+  border: 1px solid #e7e4cd;
+  border-collapse: collapse;
+  width: 600px;
+  height: 600px;
+  max-width: 600px;
+  background-color: #e7e4cd;
+  margin: auto;
+}
+
+.tile-container {
+  height: 37.5px;
+  position: relative;
+}
+
+.tile {
+  width: 37.5px;
+}
+
+.back {
+  display: block;
+  z-index: -1;
+  text-align: center;
+  line-height: 37.5px;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 300
+}
+
+.front {
+  position: absolute;
+  visibility: visible;
+  width: 37.5px;
+  height: 37.5px;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+
+.front:hover {
+  cursor: pointer;
+}
+
+.card {
+  display: block;
+  border: 1px solid rgb(180, 180, 180);
+  padding: 0px 20px 20px 20px;
+  position: absolute;
+  top: 40%;   
+  left: 50%;  
+  transform: translate(-50%, -20%);
+  z-index:100;
+  margin: auto;
+  width: 25%;
+  background-color: rgb(100, 155, 236);
+}
+
+.card p {
+  color: #e7e4cd;
+  font-size: 25px;
+}
+
+.end-message {
+  text-align: center;
+}
+
+#win, #lose {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#win button, #lose button {
+  text-align: center;
+}
+
+button:hover {
+  cursor: pointer;
+  border: 1px solid #e7e4cd;
+}
+
+button {
+  background-color: rgb(100, 155, 236);
+  color: #e7e4cd;
+  border: none;
+  font-family: "Jersey 15", serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+li {
+  font-family: "Jersey 15", serif;
+  font-size: 25px;
+  font-weight: 550;
+  font-style: normal;
+  color: #e7e4cd;
+}
+
+#howtoTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#close {
+  font-size: 30px;
+}
+
+.bomb {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+
+}
+
+audio {
+  visibility: hidden;
+}

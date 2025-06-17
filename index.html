@@ -1,0 +1,1660 @@
+<!-- index.html 
+
+    Author: Haya Raham Asif
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> </title>
+        <!-- <link rel="icon" href="./images/favicon.png" sizes="any" type="image/png">  -->
+        <link rel="stylesheet" href="./style.css">
+        <script src="./main.js" defer></script>
+    </head>
+    
+
+    <body>
+        <h1>Minesweeper</h1>
+
+        <div class="stopwatch">
+            <img src="./images/stopwatch.png" alt="">
+
+            <p id="mins">0</p>
+            <p>:</p>
+            <p id="secs">00</p>
+        </div>
+
+        <div class="card" id="howto">
+            <div id="howtoTop">
+                <p>How to Play</p>
+                <button id="close">x</button>
+            </div>
+            
+            <p>Clear the minefield by clicking on safe tiles</p>
+            <ol>
+                <li>Timer will begin once you click anywhere on the field to start</li>
+                <li>Numbered tiles show how many mines are in the 8 tiles around the clicked tile</li>
+                <li>Complete as fast as you can, but be careful, don't click on a mine or the entire field explodes!</li>
+            </ol>
+        </div>
+
+        <div class="card" id="win">
+            <div class="end-message">
+                <p>You Won! You Cleared the Minefield!</p>
+                <p id="time">0:00</p>
+            </div>
+            
+            <button id="playAgain1">Play Again</button>
+        </div>
+
+        <div class="card" id="lose">
+            <div class="end-message">
+                <p>You Dug Up a Mine and Exploded! You Lose!</p>
+                <p>-:--</p>
+            </div>
+            
+            <button id="playAgain2">Play Again</button>
+        </div>
+
+        <table id="field">
+            <tr class="row1">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                        
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row2">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row3">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row4">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row5">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row6">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row7">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row8">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row9">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row10">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row11">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row12">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row13">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row14">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row15">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+
+            <tr class="row16">
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                    </div>
+                </td>
+                </tr>
+        </table>
+
+        <audio id="dig" controls>
+            <source src="./sounds/dig.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="explode" controls>
+            <source src="./sounds/explode1.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="winSound" controls>
+            <source src="./sounds/win.mp3" type="audio/mpeg">
+        </audio>
+
+        
+    </body>
+</html>
