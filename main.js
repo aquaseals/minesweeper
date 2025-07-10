@@ -1,16 +1,3 @@
-/**
- * ICS3 - Mr. J 🐠
- * RICH SUMMATIVE TASK 2024-25 S1
- *
- * Description: Game logic for Minesweeper
- * 
- * Author: Haya Raham Asif
- *
- **/ 
-
-
-'use strict';
-
 // A very accurate rounding function
 function round(value, decimals) {
     let multiplier = 10**decimals;
