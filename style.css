@@ -44,9 +44,6 @@ p {
 table {
   border: 1px solid #e7e4cd;
   border-collapse: collapse;
-  width: 600px;
-  height: 600px;
-  max-width: 600px;
   background-color: #e7e4cd;
   margin: auto;
 }

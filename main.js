@@ -30,65 +30,98 @@ let minePos = [] // contain positions of all mines
 let digSound = document.getElementById("dig")
 let explodeSound = document.getElementById("explode")
 let winSound = document.getElementById("winSound")
+let field = document.getElementById('field')
+let gridSize = 16
+let mineNum = 40
 
-// creates 16x16 2D list of values starting from 256 (representing the empty tiles, but they are numbered for now for indexing purposes)
-tempC = 256
-for (let n=0; n<16; n++) {
+function setTable(n) {
+    // creates 16x16 2D list of values starting from 256 (representing the empty tiles, but they are numbered for now for indexing purposes)
+    gridSize = n
+    let box = `
+    <td class="tile-container">
+                    <div class="tile">
+                        <img src="./images/greenSquare.jpeg" alt="" class="front">
+                        <p class="back"></p>
+                        
+                    </div>
+                </td>`
+    field.innerHTML = ``;
+    for (let i=1; i<n+1; i++) {
+        let newRow = document.createElement('tr')
+        newRow.class = `row${n}`
+        for (let i=1; i<n+1; i++) {
+            newRow.innerHTML += box
+        }
+        field.appendChild(newRow)
+    }
+    fronts = document.querySelectorAll(".front")
+    tableTileValue = document.getElementsByClassName("back")
+}
+
+function customize() {
+    tempC = gridSize*gridSize
+    tiles = []
+    minePos = []
+    for (let n=0; n<gridSize; n++) {
     let l = []
-    for (let i=0; i<16; i++) {
+    for (let i=0; i<gridSize; i++) {
         l.push(tempC)
         tempC++
     }
     tiles.push(l)
-}
-
-// choosing 40 random row, colum positions to replace with "m" = mine
-
-while (minePos.length < 40){ // keep picking mine positions until 40 different ones are picked
-    let randomRow = randInt(0, 15)
-    let randomColumn = randInt(0, 15)
-    if (tiles[randomRow][randomColumn] != "m") { // making sure radomized coordinate doen't already have a mine
-        tiles[randomRow][randomColumn] = "m"
-        minePos.push([randomRow, randomColumn])
     }
-    
-}
 
-// calculates value of each tile depending on # of surrounding mines + changes each number to specific color
-for (let n=0; n<16; n++) {
-    for (let i=0; i<16; i++) {
-        if (tiles[n][i] >= 256) {
-            tiles[n][i] = tileValueCalculate(n, i)
-            
-            if (tiles[n][i] == 1) {
-                tableTileValue[n*16+i].style.color = "#03a1fc"
-            }
-            if (tiles[n][i] == 2) {
-                tableTileValue[n*16+i].style.color = "#23c245" 
-            }
-            if (tiles[n][i] == 3) {
-                tableTileValue[n*16+i].style.color = "#c72d1c" 
-            }
-            if (tiles[n][i] == 4) {
-                tableTileValue[n*16+i].style.color = "#7d1cc7" 
-            }
-            if (tiles[n][i] == 5) {
-                tableTileValue[n*16+i].style.color = "#ff9d1c" 
-            }
-            if (tiles[n][i] == 6) {
-                tableTileValue[n*16+i].style.color = "#4fb08c" 
-            }
-            if (tiles[n][i] == 7) {
-                tableTileValue[n*16+i].style.color = "#d14fb5" 
-            }
-            if (tiles[n][i] == 8) {
-                tableTileValue[n*16+i].style.color = "#bdbdbd" 
+        // choosing mineNum random row, colum positions to replace with "m" = mine
+
+        while (minePos.length < mineNum){ // keep picking mine positions until mineNum different ones are picked
+        let randomRow = randInt(0, gridSize-1)
+        let randomColumn = randInt(0, gridSize-1)
+        if (tiles[randomRow][randomColumn] != "m") { // making sure radomized coordinate doen't already have a mine
+            tiles[randomRow][randomColumn] = "m"
+            minePos.push([randomRow, randomColumn])
+        }
+
+        }
+
+        // calculates value of each tile depending on # of surrounding mines + changes each number to specific color
+        for (let n=0; n<gridSize; n++) {
+        for (let i=0; i<gridSize; i++) {
+            if (tiles[n][i] >= gridSize*gridSize) {
+                tiles[n][i] = tileValueCalculate(n, i)
+                
+                if (tiles[n][i] == 1) {
+                    tableTileValue[n*gridSize+i].style.color = "#03a1fc"
+                }
+                if (tiles[n][i] == 2) {
+                    tableTileValue[n*gridSize+i].style.color = "#23c245" 
+                }
+                if (tiles[n][i] == 3) {
+                    tableTileValue[n*gridSize+i].style.color = "#c72d1c" 
+                }
+                if (tiles[n][i] == 4) {
+                    tableTileValue[n*gridSize+i].style.color = "#7d1cc7" 
+                }
+                if (tiles[n][i] == 5) {
+                    tableTileValue[n*gridSize+i].style.color = "#ff9d1c" 
+                }
+                if (tiles[n][i] == 6) {
+                    tableTileValue[n*gridSize+i].style.color = "#4fb08c" 
+                }
+                if (tiles[n][i] == 7) {
+                    tableTileValue[n*gridSize+i].style.color = "#d14fb5" 
+                }
+                if (tiles[n][i] == 8) {
+                    tableTileValue[n*gridSize+i].style.color = "#bdbdbd" 
+                }
             }
         }
-    }
+        }
+
+        update() // updating all changes made to tiles 2D array to HTML table
 }
 
-update() // updating all changes made to tiles 2D array to HTML table
+
+// update(gridSize) // updating all changes made to tiles 2D array to HTML table
 document.getElementById("close").addEventListener("click", main) // main game interactions only work when user closes how to card
 
 // Functions
@@ -100,8 +133,8 @@ function sleep(ms) {
 // goes through 2D array tiles values and HTML table tile values and replaces accordingly so it showes up on screen
 function update() {
     tempC = 0 // counter used for tableTileValue index since its not a 2D array
-    for (let row=0; row<16; row++) {
-        for (let column=0; column<16; column++) {
+    for (let row=0; row<gridSize; row++) {
+        for (let column=0; column<gridSize; column++) {
             if (tiles[row][column] == "m") {
                 let node = document.createElement("IMG") // adding img tag to document
                 node.src = "./images/bomb.png" // bomb img source
@@ -118,40 +151,40 @@ function update() {
 // returns list of positions of surrounding tile values based on given position of one tile
 function allSurroundingPos(r, c) {
     let positions = [] // positions will be added as if conditions figure out positioning of given tile (border, corner or middle tile) since you only need to check a certain # of positions depending on given tile position
-    if (r == 0 && c <= 15) { // checking if given tile is top row 
-        if (c > 0 && c != 15) { // checking if its top row but not top right or left corner
+    if (r == 0 && c <= gridSize-1) { // checking if given tile is top row 
+        if (c > 0 && c != gridSize-1) { // checking if its top row but not top right or left corner
             positions.push([r, c-1], [r+1, c-1])
         } else if (c == 0) { // case for if tile is top left corner
             positions.push([r, c+1], [r+1, c], [r+1, c+1])
             return positions
-        } else if (c == 15) { // case for if tile is top right corner
+        } else if (c == gridSize-1) { // case for if tile is top right corner
             positions.push([r, c-1], [r+1, c], [r+1, c-1])
             return positions
         }
         positions.push([r, c+1], [r+1, c], [r+1, c+1]) // if it didnt pass any of above if conditions, it is a top border tile (excluding corners) and adds more positions accordingly
     }
 
-    if (r == 15 && c <= 15) { // checking if given tile is bottom row 
-        if (c > 0 && c != 15) { // checking if given tiles is bottom row but not bottom right corner
+    if (r == gridSize-1 && c <= gridSize-1) { // checking if given tile is bottom row 
+        if (c > 0 && c != gridSize-1) { // checking if given tiles is bottom row but not bottom right corner
             positions.push([r, c-1], [r-1, c-1])
         } else if (c == 0) { // checking if given tiles is bottom left corner
             positions.push([r, c+1], [r-1, c], [r-1, c+1])
             return positions
-        } else if (c == 15) { // checking if given tiles is bottom right corner
+        } else if (c == gridSize-1) { // checking if given tiles is bottom right corner
             positions.push([r, c-1], [r-1, c], [r-1, c-1])
             return positions
         }
         positions.push([r, c+1], [r-1, c], [r-1, c+1]) // if it didnt pass any of above if conditions, it is a bottom border tile (excluding corners) and adds more positions accordingly
     }
 
-    if (c == 0 && r > 0 && r < 15) { // checking if given tile is in left border (excluding corners) 
+    if (c == 0 && r > 0 && r < gridSize-1) { // checking if given tile is in left border (excluding corners) 
         positions.push([r, c+1], [r-1, c], [r-1, c+1], [r+1, c], [r+1, c+1])
     }
-    if (c == 15 && r > 0 && r < 15) { // checking if given tile is in right border (excluding corners) 
+    if (c == gridSize-1 && r > 0 && r < gridSize-1) { // checking if given tile is in right border (excluding corners) 
         positions.push([r, c-1], [r-1, c], [r-1, c-1], [r+1, c], [r+1, c-1])
     }
 
-    if (r > 0 && c>0 && c< 15 && r<15) { // checking if tile is in middle (excluding any border tiles)
+    if (r > 0 && c>0 && c< gridSize-1 && r<gridSize-1) { // checking if tile is in middle (excluding any border tiles)
         positions = [[r-1, c], [r+1, c], [r, c-1], [r, c+1], [r-1, c-1], [r-1, c+1], [r+1, c-1], [r+1, c+1]]
     }
 
@@ -211,11 +244,11 @@ function surround(r, c) {
 
 // reveals tile based on given row and column, removing green square to simulate "digging" up the minefield
 async function revealTile(r, c) {
-    if (tiles[r][c] >= 256) { // checking if tile is number 256+ and removing it because it's index is no longer required because its being revealed and needs to appear empty
-        tableTileValue[r*16+c].innerHTML = " "
+    if (tiles[r][c] >= gridSize*gridSize) { // checking if tile is number 256+ and removing it because it's index is no longer required because its being revealed and needs to appear empty
+        tableTileValue[r*gridSize+c].innerHTML = " "
     }
-    fronts[r*16+c].style.visibility = "hidden"
-    if (tiles[r][c] >= 256 || tiles[r][c] < 9) { // checking if tile is safe, then play dig sound
+    fronts[r*gridSize+c].style.visibility = "hidden"
+    if (tiles[r][c] >= gridSize*gridSize || tiles[r][c] < 9) { // checking if tile is safe, then play dig sound
         // plays dig sound for 0.5 seconds then pauses and resets audio currentTime position to 0 seconds
         digSound.play()
         await sleep(500)
@@ -282,7 +315,7 @@ function stickyReveal(r, c) {
 
 // calculates row index for 2d array based on index of tile from 1d entire tables array
 function rowCalculate(n) {
- return Number(String(n/16).split(".")[0])
+ return Number(String(n/gridSize).split(".")[0])
 }
 
 function win() {
@@ -317,7 +350,7 @@ async function lose() {
     document.getElementById("secs").innerHTML = "00"
     document.getElementById("mins").innerHTML = "0"
     // revealing all the other mines in the field to show user where they were
-    for (let i=0; i<256; i++) {
+    for (let i=0; i<gridSize*gridSize; i++) {
         let row = rowCalculate(i)
         let column = cells[i].cellIndex
         if (tiles[row][column] == "m") {
@@ -333,10 +366,10 @@ async function lose() {
 
 function main() {
     document.getElementById("howto").style.display = "none"
-
     // adds addEventListener to all green square front part of tile
-    for (let i = 0; i < 256; i++) {
-        fronts[i].addEventListener("click", function(){
+    for (let i = 0; i < gridSize*gridSize; i++) {
+
+        fronts[i].addEventListener("click", function handleTileClick(){
             tileClicks++
             let row = rowCalculate(i)
             let column = cells[i].cellIndex
@@ -352,7 +385,7 @@ function main() {
                 lose()
             }
 
-            if (chosenTileValue >= 256) { // checking if tile is "empty" (empty as in it has no mines around it, but it checks for 256+ values for indexing/positioning purposes)
+            if (chosenTileValue >= gridSize*gridSize) { // checking if tile is "empty" (empty as in it has no mines around it, but it checks for 256+ values for indexing/positioning purposes)
                 stickyReveal(row, column)
             }
 
@@ -362,12 +395,12 @@ function main() {
 
             let revealedTilesCount = 0 // resetting revealed tile count variable
             // going through all tiles and checking if its revealed
-            for (let k=0; k<256; k++) {
+            for (let k=0; k<gridSize*gridSize; k++) {
                 if (fronts[k].style.visibility == "hidden") {
                     revealedTilesCount++
                 }
             }
-            if (revealedTilesCount == 216) { // if user revealed 216 tiles without losing they win (snce its 256 tilesa dn 40 are mines = 256-40 = 216 = tiles user has to reveal to win)
+            if (revealedTilesCount == ((gridSize*gridSize)-mineNum)) { // if user revealed 216 tiles without losing they win (snce its 256 tilesa dn mineNum are mines = 256-mineNum = 216 = tiles user has to reveal to win)
                 win()
             }
 
@@ -375,3 +408,7 @@ function main() {
       }
 }
 
+// code
+
+setTable(gridSize)
+customize()
