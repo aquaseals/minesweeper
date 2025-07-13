@@ -33,6 +33,10 @@ let winSound = document.getElementById("winSound")
 let field = document.getElementById('field')
 let gridSize = 16
 let mineNum = 40
+let bombImage = document.getElementById('bombImage')
+let bombSRC = ''
+let tileImage = document.getElementById('tileImage')
+let tileSRC = ''
 
 function setTable(n) {
     // creates 16x16 2D list of values starting from 256 (representing the empty tiles, but they are numbered for now for indexing purposes)
@@ -118,6 +122,7 @@ function customize() {
         }
 
         update() // updating all changes made to tiles 2D array to HTML table
+        setImages()
 }
 
 
@@ -231,7 +236,7 @@ function surround(r, c) {
     let p = allSurroundingPos(r, c) // all tile positions around given tile
     for (let i=0; i<p.length; i++) {
         let coordinate = p[i]
-        if (tiles[coordinate[0]][coordinate[1]] >= 256) { // checking for empty tile (not actually empty, but the number is used for indexing) and adding to according array if true
+        if (tiles[coordinate[0]][coordinate[1]] >= gridSize*gridSize) { // checking for empty tile (not actually empty, but the number is used for indexing) and adding to according array if true
             emptyTilePos.push(coordinate)
         }
         if (tiles[coordinate[0]][coordinate[1]] < 9) { // checking for tiles numbered 1-8 and adding to according array if true
@@ -366,6 +371,13 @@ async function lose() {
 
 function main() {
     document.getElementById("howto").style.display = "none"
+
+    let userChoice1 = Number(document.getElementById('gridSize').value)
+    let userChoice2 = Number(document.getElementById('numOfMines').value)
+    mineNum = userChoice2
+    setTable(userChoice1)
+    customize()
+
     // adds addEventListener to all green square front part of tile
     for (let i = 0; i < gridSize*gridSize; i++) {
 
@@ -378,6 +390,7 @@ function main() {
             }
 
             let chosenTileValue = tableTileValue[i].innerHTML // storing value of user's chosen tile
+            console.log(chosenTileValue)
 
             if (tiles[row][column] == "m") { // checking if clicked tile is a mine
                 cells[i].style.backgroundColor = "#c72d1c" // change "exploded" mine to red background color
@@ -387,10 +400,12 @@ function main() {
 
             if (chosenTileValue >= gridSize*gridSize) { // checking if tile is "empty" (empty as in it has no mines around it, but it checks for 256+ values for indexing/positioning purposes)
                 stickyReveal(row, column)
+                console.log(`this is an empty tile`)
             }
 
             if (chosenTileValue < 9) { // reveals clicked tile only if its numbered 1-8
                 revealTile(row, column)
+                console.log(`this is a numbered tile`)
             }
 
             let revealedTilesCount = 0 // resetting revealed tile count variable
@@ -412,3 +427,53 @@ function main() {
 
 setTable(gridSize)
 customize()
+
+bombImage.addEventListener("change", function(e){
+    const file = e.target.files[0]
+    console.log(e.target.files)
+    if (file) {
+        const reader = new FileReader()
+
+        reader.onload = function(e) {
+            bombSRC = e.target.result
+        }
+
+        reader.readAsDataURL(file)
+    } else {
+        bombSRC = ''
+    }
+    console.log(bombSRC)
+})
+
+tileImage.addEventListener("change", function(e){
+    const file = e.target.files[0]
+    console.log(e.target.files)
+    if (file) {
+        const reader = new FileReader()
+
+        reader.onload = function(e) {
+            tileSRC = e.target.result
+        }
+
+        reader.readAsDataURL(file)
+    } else {
+        tileSRC = ''
+    }
+    console.log(tileSRC)
+})
+
+function setImages() {
+    let bombs = document.querySelectorAll(".bomb")
+    if (bombSRC.length > 0) {
+        for (let i=0; i<bombs.length; i++) {
+        bombs[i].src = bombSRC
+    }
+    }
+
+    let tiles = document.querySelectorAll(".front")
+    if (tileSRC.length > 0) {
+        for (let i=0; i<tiles.length; i++) {
+        tiles[i].src = tileSRC
+    }
+    }
+}

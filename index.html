@@ -32,6 +32,23 @@
                 <li>Numbered tiles show how many mines are in the 8 tiles around the clicked tile</li>
                 <li>Complete as fast as you can, but be careful, don't click on a mine or the entire field explodes!</li>
             </ol>
+
+
+                <p>Size of minefield</p>
+                <input type="number" min="2" placeholder="size of minefield" name="gridSize" id="gridSize" value="16">
+
+                <p>Number of Mines</p>
+                <input type="number" name="numOfMines" id="numOfMines" min="0" value="40">
+
+                <p>Bomb Picture (leave empty for default)</p>
+                <input type="file" accept="image/*" id="bombImage">
+
+                <p>Tile Picture (leave empty for default)</p>
+                <input type="file" accept="image/*" id="tileImage">
+
+                <p>When you close this window, minefield settings will be applied</p>
+
+
         </div>
 
         <div class="card" id="win">
