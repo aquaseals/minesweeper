@@ -372,10 +372,23 @@ async function lose() {
 function main() {
     document.getElementById("howto").style.display = "none"
 
+    let difficulty = document.getElementById('difficulty').value
+    // creating minefield size + # of mines based on difficulty dropdown OR custom inputs
     let userChoice1 = Number(document.getElementById('gridSize').value)
     let userChoice2 = Number(document.getElementById('numOfMines').value)
-    mineNum = userChoice2
-    setTable(userChoice1)
+    if (difficulty === "CUSTOM") {
+        mineNum = userChoice2
+        setTable(userChoice1)
+    } else if (difficulty === "Easy") {
+        mineNum = 10
+        setTable(9)
+    } else if (difficulty === "Medium") {
+        mineNum = 40
+        setTable(16)
+    } else if (difficulty === "Hard") {
+        mineNum = 99
+        setTable(22)
+    }
     customize()
 
     // adds addEventListener to all green square front part of tile
