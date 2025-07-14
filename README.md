@@ -1,1 +1,1 @@
-minesweeper! (school cs project)
+minesweeper! 
