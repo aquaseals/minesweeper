@@ -60,6 +60,11 @@ function setTable(n) {
     }
     fronts = document.querySelectorAll(".front")
     tableTileValue = document.getElementsByClassName("back")
+
+    // var r = document.querySelector(':root')
+    // r.style.setProperty('--tile-width', `${document.getElementById('field').getBoundingClientRect().width/(n)}px`)
+    // console.log(document.getElementById('field').getBoundingClientRect().width/(n))
+    
 }
 
 function customize() {
@@ -344,6 +349,13 @@ function win() {
 }
 
 async function lose() {
+    //technically works but then you cant see where all the bombs were..
+    // for (let i=0; i<fronts.length; i++) {
+    //     let newTile = fronts[i].cloneNode(true)
+    //     fronts[i].parentNode.replaceChild(newTile, fronts[i])
+    //     fronts[i] = newTile
+    // }
+
     // plays explode sound for 0.5 seconds then pauses and resets audio currentTime position to 0 seconds
     explodeSound.play()
     await sleep(500)
@@ -373,13 +385,8 @@ function main() {
     document.getElementById("howto").style.display = "none"
 
     let difficulty = document.getElementById('difficulty').value
-    // creating minefield size + # of mines based on difficulty dropdown OR custom inputs
-    let userChoice1 = Number(document.getElementById('gridSize').value)
-    let userChoice2 = Number(document.getElementById('numOfMines').value)
-    if (difficulty === "CUSTOM") {
-        mineNum = userChoice2
-        setTable(userChoice1)
-    } else if (difficulty === "Easy") {
+    // creating minefield size + # of mines based on difficulty dropdown
+    if (difficulty === "Easy") {
         mineNum = 10
         setTable(9)
     } else if (difficulty === "Medium") {
@@ -438,8 +445,8 @@ function main() {
 
 // code
 
-setTable(gridSize)
-customize()
+// setTable(gridSize)
+// customize()
 
 bombImage.addEventListener("change", function(e){
     const file = e.target.files[0]

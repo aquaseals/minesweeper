@@ -6,6 +6,7 @@
         <!-- <link rel="icon" href="./images/favicon.png" sizes="any" type="image/png">  -->
         <link rel="stylesheet" href="./style.css">
         <script src="./main.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
 
@@ -33,28 +34,27 @@
                 <li>Complete as fast as you can, but be careful, don't click on a mine or the entire field explodes!</li>
             </ol>
 
+            <div class="container">
+                <div>
                 <p>Select Difficulty</p>
                 <select name="difficulty" id="difficulty">
-                    <option value="CUSTOM">CUSTOM</option>
                     <option value="Easy">Easy</option>
-                    <option value="Easy">Medium</option>
-                    <option value="Easy">Hard</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
                 </select>
 
-                <p>OR customize your minefield ✨</p>
+            </div>
 
-
-                <p>Size of minefield</p>
-                <input type="number" min="2" placeholder="size of minefield" name="gridSize" id="gridSize" value="0">
-
-                <p>Number of Mines</p>
-                <input type="number" name="numOfMines" id="numOfMines" min="0" value="0">
-
+            <div>
                 <p>Bomb Picture (leave empty for default)</p>
                 <input type="file" accept="image/*" id="bombImage">
 
                 <p>Tile Picture (leave empty for default)</p>
                 <input type="file" accept="image/*" id="tileImage">
+
+            </div>
+
+            </div>
 
                 <p>When you close this window, minefield settings will be applied</p>
 

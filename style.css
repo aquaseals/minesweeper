@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
+:root {
+  --tile-width: 37.5px;
+}
+
 body {
   background-color: rgb(187, 148, 223);
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 h1 {
@@ -13,8 +19,6 @@ h1 {
   color: blueviolet;
   margin-bottom: 0;
 }
-
-
 
 .stopwatch {
   display: flex;
@@ -43,25 +47,23 @@ p {
 
 table {
   border: 1px solid #e7e4cd;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: calc(var(--tile-width) * 0.05);
   background-color: #e7e4cd;
   margin: auto;
 }
 
 .tile-container {
-  height: 37.5px;
+  height: var(--tile-width);
+  width: var(--tile-width);
   position: relative;
-}
-
-.tile {
-  width: 37.5px;
 }
 
 .back {
   display: block;
   z-index: -1;
   text-align: center;
-  line-height: 37.5px;
+  line-height: var(--tile-width);
   margin: 0;
   font-size: 25px;
   font-weight: 300
@@ -70,8 +72,8 @@ table {
 .front {
   position: absolute;
   visibility: visible;
-  width: 37.5px;
-  height: 37.5px;
+  width: var(--tile-width);
+  height: var(--tile-width);
   bottom: 0;
   left: 0;
   margin: 0;
@@ -144,6 +146,16 @@ li {
   align-items: center;
 }
 
+#howto {
+  width: 80%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 #close {
   font-size: 30px;
 }
@@ -157,4 +169,23 @@ li {
 
 audio {
   visibility: hidden;
+}
+
+
+/* mobile friendly */
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  h1 {
+  font-size: 50px;
+  color: blueviolet;
+  }
+
+  .card p, li {
+    font-size: 15px;
+  }
+
 }
